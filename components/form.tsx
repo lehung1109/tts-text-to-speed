@@ -33,6 +33,9 @@ const Form = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    globalThis.speechSynthesis.cancel(); // Stop any ongoing speech
+
     const formData = new FormData(e.target as HTMLFormElement);
     const text = formData.get("text") as string;
     const voice = formData.get("voice") as string;
